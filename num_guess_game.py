@@ -1,7 +1,7 @@
 import random
 
 tries = 1
-guess = 0
+guess = []
 high_score = 9999
 play_again = "y"
 
@@ -16,7 +16,6 @@ while play_again == 'y':
 
     # create a  random number
     r_number = random.randint(1,10)
-
     # Keep asking to guess the number
     while guess != r_number:
         guess = input("Enter your guess between 1-10: ")
@@ -26,14 +25,15 @@ while play_again == 'y':
             print("Make sure you are entering a number from 1-10")
             guess = 0
             tries += 1
+            guess = input("Enter your guess between 1-10: ")
 
         guess = int(guess)
 
-        if guess > 10:
+        if guess < 1 or guess > 10:
             print("You're guess is not in the range 1-10. Try again!")
             tries += 1
         #if the number that was guessed is lower. Ask to take another guess and add 1 to the tries.
-        elif guess < r_number and guess > 0:
+        elif guess < r_number:
             print("You're guess is lower than my number. Try again!")
             tries += 1
         #if the number is not smaller and not correct then it must be higher. Ask to try again
